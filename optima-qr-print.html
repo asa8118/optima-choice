@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPTIMA CHIP - Print Version</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #0a0a15 0%, #1a1a35 50%, #0a0a15 100%);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #00ffff;
+            box-shadow:
+                0 0 50px rgba(0, 255, 255, 0.3),
+                0 0 100px rgba(255, 0, 255, 0.2),
+                inset 0 0 50px rgba(0, 0, 0, 0.8);
+            max-width: 450px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: rgba(0, 255, 255, 0.7);
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .qr-frame {
+            position: relative;
+            display: inline-block;
+            padding: 20px;
+            background: #000;
+            border-radius: 15px;
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #00ffff, #ff00ff) 1;
+        }
+
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            display: block;
+        }
+
+        /* Corner decorations */
+        .corner-marks {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+        }
+
+        .corner-mark {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00ffff;
+        }
+
+        .corner-mark.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+        .corner-mark.tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+        .corner-mark.bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+        .corner-mark.br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+        .chip-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 45px;
+            height: 45px;
+            background: #0a0a15;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #00ffff;
+        }
+
+        .chip-center svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .free-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 10px 25px;
+            border-radius: 25px;
+            letter-spacing: 2px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .limited-text {
+            color: #ff4466;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .scan-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .scan-text span {
+            color: #00ffff;
+        }
+
+        /* Print-friendly styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                border: 3px solid #000;
+                background: white;
+            }
+            .title {
+                color: #000;
+                -webkit-text-fill-color: #000;
+            }
+            .qr-frame {
+                border: 3px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">NEUROCIAN</div>
+        <h1 class="title">OPTIMA CHIP</h1>
+        <p class="tagline">Optimize Your Decisions</p>
+
+        <div class="qr-frame">
+            <div class="corner-marks">
+                <div class="corner-mark tl"></div>
+                <div class="corner-mark tr"></div>
+                <div class="corner-mark bl"></div>
+                <div class="corner-mark br"></div>
+            </div>
+
+            <svg class="qr-code" viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="qrGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00ffff"/>
+                        <stop offset="100%" style="stop-color:#ff00ff"/>
+                    </linearGradient>
+                </defs>
+
+                <rect width="37" height="37" fill="#0a0a15"/>
+
+                <g fill="url(#qrGrad)">
+                    <!-- Position Detection Pattern - Top Left -->
+                    <rect x="1" y="1" width="7" height="1"/>
+                    <rect x="1" y="7" width="7" height="1"/>
+                    <rect x="1" y="1" width="1" height="7"/>
+                    <rect x="7" y="1" width="1" height="7"/>
+                    <rect x="3" y="3" width="3" height="3"/>
+
+                    <!-- Position Detection Pattern - Top Right -->
+                    <rect x="29" y="1" width="7" height="1"/>
+                    <rect x="29" y="7" width="7" height="1"/>
+                    <rect x="29" y="1" width="1" height="7"/>
+                    <rect x="35" y="1" width="1" height="7"/>
+                    <rect x="31" y="3" width="3" height="3"/>
+
+                    <!-- Position Detection Pattern - Bottom Left -->
+                    <rect x="1" y="29" width="7" height="1"/>
+                    <rect x="1" y="35" width="7" height="1"/>
+                    <rect x="1" y="29" width="1" height="7"/>
+                    <rect x="7" y="29" width="1" height="7"/>
+                    <rect x="3" y="31" width="3" height="3"/>
+
+                    <!-- Timing Patterns -->
+                    <rect x="9" y="7" width="1" height="1"/>
+                    <rect x="11" y="7" width="1" height="1"/>
+                    <rect x="13" y="7" width="1" height="1"/>
+                    <rect x="15" y="7" width="1" height="1"/>
+                    <rect x="17" y="7" width="1" height="1"/>
+                    <rect x="19" y="7" width="1" height="1"/>
+                    <rect x="21" y="7" width="1" height="1"/>
+                    <rect x="23" y="7" width="1" height="1"/>
+                    <rect x="25" y="7" width="1" height="1"/>
+                    <rect x="27" y="7" width="1" height="1"/>
+
+                    <rect x="7" y="9" width="1" height="1"/>
+                    <rect x="7" y="11" width="1" height="1"/>
+                    <rect x="7" y="13" width="1" height="1"/>
+                    <rect x="7" y="15" width="1" height="1"/>
+                    <rect x="7" y="17" width="1" height="1"/>
+                    <rect x="7" y="19" width="1" height="1"/>
+                    <rect x="7" y="21" width="1" height="1"/>
+                    <rect x="7" y="23" width="1" height="1"/>
+                    <rect x="7" y="25" width="1" height="1"/>
+                    <rect x="7" y="27" width="1" height="1"/>
+
+                    <!-- Data modules -->
+                    <rect x="9" y="1" width="1" height="1"/>
+                    <rect x="10" y="2" width="1" height="1"/>
+                    <rect x="11" y="1" width="1" height="1"/>
+                    <rect x="12" y="3" width="1" height="1"/>
+                    <rect x="13" y="2" width="1" height="1"/>
+                    <rect x="14" y="1" width="1" height="1"/>
+                    <rect x="15" y="4" width="1" height="1"/>
+                    <rect x="16" y="2" width="1" height="1"/>
+                    <rect x="17" y="1" width="1" height="1"/>
+                    <rect x="18" y="3" width="1" height="1"/>
+                    <rect x="19" y="2" width="1" height="1"/>
+                    <rect x="20" y="5" width="1" height="1"/>
+                    <rect x="21" y="1" width="1" height="1"/>
+                    <rect x="22" y="4" width="1" height="1"/>
+                    <rect x="23" y="2" width="1" height="1"/>
+                    <rect x="24" y="3" width="1" height="1"/>
+                    <rect x="25" y="1" width="1" height="1"/>
+                    <rect x="26" y="5" width="1" height="1"/>
+                    <rect x="27" y="2" width="1" height="1"/>
+
+                    <rect x="1" y="9" width="1" height="1"/>
+                    <rect x="2" y="10" width="1" height="1"/>
+                    <rect x="3" y="11" width="1" height="1"/>
+                    <rect x="4" y="9" width="1" height="1"/>
+                    <rect x="5" y="12" width="1" height="1"/>
+                    <rect x="1" y="13" width="1" height="1"/>
+                    <rect x="2" y="14" width="1" height="1"/>
+                    <rect x="3" y="15" width="1" height="1"/>
+                    <rect x="4" y="13" width="1" height="1"/>
+                    <rect x="5" y="16" width="1" height="1"/>
+                    <rect x="1" y="17" width="1" height="1"/>
+                    <rect x="2" y="18" width="1" height="1"/>
+                    <rect x="3" y="19" width="1" height="1"/>
+                    <rect x="4" y="17" width="1" height="1"/>
+                    <rect x="5" y="20" width="1" height="1"/>
+                    <rect x="1" y="21" width="1" height="1"/>
+                    <rect x="2" y="22" width="1" height="1"/>
+                    <rect x="3" y="23" width="1" height="1"/>
+                    <rect x="4" y="21" width="1" height="1"/>
+                    <rect x="5" y="24" width="1" height="1"/>
+                    <rect x="1" y="25" width="1" height="1"/>
+                    <rect x="2" y="26" width="1" height="1"/>
+                    <rect x="3" y="27" width="1" height="1"/>
+
+                    <!-- Center modules (avoiding center for logo) -->
+                    <rect x="9" y="9" width="1" height="1"/>
+                    <rect x="11" y="9" width="1" height="1"/>
+                    <rect x="13" y="9" width="1" height="1"/>
+                    <rect x="10" y="10" width="1" height="1"/>
+                    <rect x="12" y="10" width="1" height="1"/>
+                    <rect x="9" y="11" width="1" height="1"/>
+                    <rect x="11" y="11" width="1" height="1"/>
+                    <rect x="13" y="11" width="1" height="1"/>
+                    <rect x="10" y="12" width="1" height="1"/>
+                    <rect x="12" y="12" width="1" height="1"/>
+                    <rect x="9" y="13" width="1" height="1"/>
+                    <rect x="11" y="13" width="1" height="1"/>
+
+                    <rect x="23" y="9" width="1" height="1"/>
+                    <rect x="25" y="9" width="1" height="1"/>
+                    <rect x="27" y="9" width="1" height="1"/>
+                    <rect x="24" y="10" width="1" height="1"/>
+                    <rect x="26" y="10" width="1" height="1"/>
+                    <rect x="23" y="11" width="1" height="1"/>
+                    <rect x="25" y="11" width="1" height="1"/>
+                    <rect x="27" y="11" width="1" height="1"/>
+                    <rect x="24" y="12" width="1" height="1"/>
+                    <rect x="26" y="12" width="1" height="1"/>
+                    <rect x="23" y="13" width="1" height="1"/>
+                    <rect x="25" y="13" width="1" height="1"/>
+
+                    <rect x="9" y="23" width="1" height="1"/>
+                    <rect x="11" y="23" width="1" height="1"/>
+                    <rect x="13" y="23" width="1" height="1"/>
+                    <rect x="10" y="24" width="1" height="1"/>
+                    <rect x="12" y="24" width="1" height="1"/>
+                    <rect x="9" y="25" width="1" height="1"/>
+                    <rect x="11" y="25" width="1" height="1"/>
+                    <rect x="13" y="25" width="1" height="1"/>
+                    <rect x="10" y="26" width="1" height="1"/>
+                    <rect x="12" y="26" width="1" height="1"/>
+                    <rect x="9" y="27" width="1" height="1"/>
+                    <rect x="11" y="27" width="1" height="1"/>
+
+                    <rect x="23" y="23" width="1" height="1"/>
+                    <rect x="25" y="23" width="1" height="1"/>
+                    <rect x="27" y="23" width="1" height="1"/>
+                    <rect x="24" y="24" width="1" height="1"/>
+                    <rect x="26" y="24" width="1" height="1"/>
+                    <rect x="23" y="25" width="1" height="1"/>
+                    <rect x="25" y="25" width="1" height="1"/>
+                    <rect x="27" y="25" width="1" height="1"/>
+                    <rect x="24" y="26" width="1" height="1"/>
+                    <rect x="26" y="26" width="1" height="1"/>
+                    <rect x="23" y="27" width="1" height="1"/>
+                    <rect x="25" y="27" width="1" height="1"/>
+
+                    <!-- Right edge modules -->
+                    <rect x="29" y="9" width="1" height="1"/>
+                    <rect x="31" y="9" width="1" height="1"/>
+                    <rect x="33" y="9" width="1" height="1"/>
+                    <rect x="35" y="9" width="1" height="1"/>
+                    <rect x="30" y="10" width="1" height="1"/>
+                    <rect x="32" y="10" width="1" height="1"/>
+                    <rect x="34" y="10" width="1" height="1"/>
+                    <rect x="29" y="11" width="1" height="1"/>
+                    <rect x="31" y="11" width="1" height="1"/>
+                    <rect x="33" y="11" width="1" height="1"/>
+                    <rect x="35" y="11" width="1" height="1"/>
+                    <rect x="30" y="12" width="1" height="1"/>
+                    <rect x="32" y="12" width="1" height="1"/>
+                    <rect x="34" y="12" width="1" height="1"/>
+                    <rect x="29" y="13" width="1" height="1"/>
+                    <rect x="31" y="13" width="1" height="1"/>
+                    <rect x="33" y="13" width="1" height="1"/>
+                    <rect x="35" y="13" width="1" height="1"/>
+                    <rect x="29" y="15" width="1" height="1"/>
+                    <rect x="31" y="15" width="1" height="1"/>
+                    <rect x="33" y="15" width="1" height="1"/>
+                    <rect x="35" y="15" width="1" height="1"/>
+                    <rect x="30" y="16" width="1" height="1"/>
+                    <rect x="32" y="16" width="1" height="1"/>
+                    <rect x="34" y="16" width="1" height="1"/>
+                    <rect x="29" y="17" width="1" height="1"/>
+                    <rect x="31" y="17" width="1" height="1"/>
+                    <rect x="33" y="17" width="1" height="1"/>
+                    <rect x="35" y="17" width="1" height="1"/>
+                    <rect x="30" y="18" width="1" height="1"/>
+                    <rect x="32" y="18" width="1" height="1"/>
+                    <rect x="34" y="18" width="1" height="1"/>
+                    <rect x="29" y="19" width="1" height="1"/>
+                    <rect x="31" y="19" width="1" height="1"/>
+                    <rect x="33" y="19" width="1" height="1"/>
+                    <rect x="35" y="19" width="1" height="1"/>
+                    <rect x="29" y="21" width="1" height="1"/>
+                    <rect x="31" y="21" width="1" height="1"/>
+                    <rect x="33" y="21" width="1" height="1"/>
+                    <rect x="35" y="21" width="1" height="1"/>
+                    <rect x="30" y="22" width="1" height="1"/>
+                    <rect x="32" y="22" width="1" height="1"/>
+                    <rect x="34" y="22" width="1" height="1"/>
+                    <rect x="29" y="23" width="1" height="1"/>
+                    <rect x="31" y="23" width="1" height="1"/>
+                    <rect x="33" y="23" width="1" height="1"/>
+                    <rect x="35" y="23" width="1" height="1"/>
+                    <rect x="30" y="24" width="1" height="1"/>
+                    <rect x="32" y="24" width="1" height="1"/>
+                    <rect x="34" y="24" width="1" height="1"/>
+                    <rect x="29" y="25" width="1" height="1"/>
+                    <rect x="31" y="25" width="1" height="1"/>
+                    <rect x="33" y="25" width="1" height="1"/>
+                    <rect x="35" y="25" width="1" height="1"/>
+                    <rect x="30" y="26" width="1" height="1"/>
+                    <rect x="32" y="26" width="1" height="1"/>
+                    <rect x="34" y="26" width="1" height="1"/>
+                    <rect x="29" y="27" width="1" height="1"/>
+                    <rect x="31" y="27" width="1" height="1"/>
+                    <rect x="33" y="27" width="1" height="1"/>
+                    <rect x="35" y="27" width="1" height="1"/>
+
+                    <!-- Bottom modules -->
+                    <rect x="9" y="29" width="1" height="1"/>
+                    <rect x="11" y="29" width="1" height="1"/>
+                    <rect x="13" y="29" width="1" height="1"/>
+                    <rect x="15" y="29" width="1" height="1"/>
+                    <rect x="17" y="29" width="1" height="1"/>
+                    <rect x="19" y="29" width="1" height="1"/>
+                    <rect x="21" y="29" width="1" height="1"/>
+                    <rect x="23" y="29" width="1" height="1"/>
+                    <rect x="25" y="29" width="1" height="1"/>
+                    <rect x="27" y="29" width="1" height="1"/>
+                    <rect x="10" y="30" width="1" height="1"/>
+                    <rect x="12" y="30" width="1" height="1"/>
+                    <rect x="14" y="30" width="1" height="1"/>
+                    <rect x="16" y="30" width="1" height="1"/>
+                    <rect x="18" y="30" width="1" height="1"/>
+                    <rect x="20" y="30" width="1" height="1"/>
+                    <rect x="22" y="30" width="1" height="1"/>
+                    <rect x="24" y="30" width="1" height="1"/>
+                    <rect x="26" y="30" width="1" height="1"/>
+                    <rect x="9" y="31" width="1" height="1"/>
+                    <rect x="11" y="31" width="1" height="1"/>
+                    <rect x="13" y="31" width="1" height="1"/>
+                    <rect x="15" y="31" width="1" height="1"/>
+                    <rect x="17" y="31" width="1" height="1"/>
+                    <rect x="19" y="31" width="1" height="1"/>
+                    <rect x="21" y="31" width="1" height="1"/>
+                    <rect x="23" y="31" width="1" height="1"/>
+                    <rect x="25" y="31" width="1" height="1"/>
+                    <rect x="27" y="31" width="1" height="1"/>
+                    <rect x="10" y="32" width="1" height="1"/>
+                    <rect x="12" y="32" width="1" height="1"/>
+                    <rect x="14" y="32" width="1" height="1"/>
+                    <rect x="16" y="32" width="1" height="1"/>
+                    <rect x="18" y="32" width="1" height="1"/>
+                    <rect x="20" y="32" width="1" height="1"/>
+                    <rect x="22" y="32" width="1" height="1"/>
+                    <rect x="24" y="32" width="1" height="1"/>
+                    <rect x="26" y="32" width="1" height="1"/>
+                    <rect x="9" y="33" width="1" height="1"/>
+                    <rect x="11" y="33" width="1" height="1"/>
+                    <rect x="13" y="33" width="1" height="1"/>
+                    <rect x="15" y="33" width="1" height="1"/>
+                    <rect x="17" y="33" width="1" height="1"/>
+                    <rect x="19" y="33" width="1" height="1"/>
+                    <rect x="21" y="33" width="1" height="1"/>
+                    <rect x="23" y="33" width="1" height="1"/>
+                    <rect x="25" y="33" width="1" height="1"/>
+                    <rect x="27" y="33" width="1" height="1"/>
+                    <rect x="10" y="34" width="1" height="1"/>
+                    <rect x="12" y="34" width="1" height="1"/>
+                    <rect x="14" y="34" width="1" height="1"/>
+                    <rect x="16" y="34" width="1" height="1"/>
+                    <rect x="18" y="34" width="1" height="1"/>
+                    <rect x="20" y="34" width="1" height="1"/>
+                    <rect x="22" y="34" width="1" height="1"/>
+                    <rect x="24" y="34" width="1" height="1"/>
+                    <rect x="26" y="34" width="1" height="1"/>
+                    <rect x="9" y="35" width="1" height="1"/>
+                    <rect x="11" y="35" width="1" height="1"/>
+                    <rect x="13" y="35" width="1" height="1"/>
+                    <rect x="15" y="35" width="1" height="1"/>
+                    <rect x="17" y="35" width="1" height="1"/>
+                    <rect x="19" y="35" width="1" height="1"/>
+                    <rect x="21" y="35" width="1" height="1"/>
+                    <rect x="23" y="35" width="1" height="1"/>
+                    <rect x="25" y="35" width="1" height="1"/>
+                    <rect x="27" y="35" width="1" height="1"/>
+
+                    <!-- Alignment pattern -->
+                    <rect x="29" y="29" width="5" height="1"/>
+                    <rect x="29" y="33" width="5" height="1"/>
+                    <rect x="29" y="29" width="1" height="5"/>
+                    <rect x="33" y="29" width="1" height="5"/>
+                    <rect x="31" y="31" width="1" height="1"/>
+                </g>
+            </svg>
+
+            <div class="chip-center">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="6" width="12" height="12" rx="2" stroke="#00ffff" stroke-width="1.5"/>
+                    <rect x="9" y="9" width="6" height="6" fill="#00ffff"/>
+                    <line x1="12" y1="2" x2="12" y2="6" stroke="#00ffff" stroke-width="1.5"/>
+                    <line x1="12" y1="18" x2="12" y2="22" stroke="#00ffff" stroke-width="1.5"/>
+                    <line x1="2" y1="12" x2="6" y2="12" stroke="#00ffff" stroke-width="1.5"/>
+                    <line x1="18" y1="12" x2="22" y2="12" stroke="#00ffff" stroke-width="1.5"/>
+                    <line x1="4" y1="8" x2="6" y2="8" stroke="#ff00ff" stroke-width="1"/>
+                    <line x1="4" y1="16" x2="6" y2="16" stroke="#ff00ff" stroke-width="1"/>
+                    <line x1="18" y1="8" x2="20" y2="8" stroke="#ff00ff" stroke-width="1"/>
+                    <line x1="18" y1="16" x2="20" y2="16" stroke="#ff00ff" stroke-width="1"/>
+                    <line x1="8" y1="4" x2="8" y2="6" stroke="#ff00ff" stroke-width="1"/>
+                    <line x1="16" y1="4" x2="16" y2="6" stroke="#ff00ff" stroke-width="1"/>
+                    <line x1="8" y1="18" x2="8" y2="20" stroke="#ff00ff" stroke-width="1"/>
+                    <line x1="16" y1="18" x2="16" y2="20" stroke="#ff00ff" stroke-width="1"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="free-badge">FIRST 1,000 FREE</div>
+        <div class="limited-text">LIMITED TIME OFFER</div>
+        <p class="scan-text">SCAN TO <span>OPTIMIZE</span> YOUR FUTURE</p>
+    </div>
+</body>
+</html>

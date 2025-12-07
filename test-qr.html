@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QR Test</title>
+    <style>
+        body {
+            background: #0a0a0f;
+            color: #00ffff;
+            font-family: monospace;
+            padding: 40px;
+            text-align: center;
+        }
+        #qr {
+            margin: 20px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            display: inline-block;
+            border-radius: 10px;
+        }
+        .info {
+            margin-top: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>QR Code Test</h1>
+    <div id="status">Loading...</div>
+    <div id="qr"></div>
+    <div class="info">
+        <p>URL: <span id="url">-</span></p>
+        <p>Status: <span id="result">-</span></p>
+    </div>
+
+    <script>
+        const landingURL = 'https://asa8118.github.io/optima-choice/landing-page.html';
+        document.getElementById('url').textContent = landingURL;
+
+        const qrSize = 300;
+        const encodedURL = encodeURIComponent(landingURL);
+        const qrAPI = `https://api.qrserver.com/v1/create-qr-code/?size=${qrSize}x${qrSize}&data=${encodedURL}&color=00ffff&bgcolor=1a1a2e`;
+
+        const img = new Image();
+        img.src = qrAPI;
+
+        img.onload = function() {
+            document.getElementById('status').textContent = '✅ QR Code Generated Successfully!';
+            document.getElementById('result').textContent = 'WORKING';
+            document.getElementById('result').style.color = '#00ff00';
+            document.getElementById('qr').appendChild(img);
+        };
+
+        img.onerror = function() {
+            document.getElementById('status').textContent = '❌ Failed to generate QR code';
+            document.getElementById('result').textContent = 'FAILED - Check internet connection';
+            document.getElementById('result').style.color = '#ff0000';
+        };
+
+        console.log('QR API URL:', qrAPI);
+        console.log('Landing page URL:', landingURL);
+    </script>
+</body>
+</html>
