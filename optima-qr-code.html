@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPTIMA CHIP - Register Now | Neurocian</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0a0a0f;
+            font-family: 'Rajdhani', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Animated background grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: cyan;
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* Logo */
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            color: rgba(0, 255, 255, 0.6);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00ffff, #ff00ff, #00ffff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            margin-bottom: 5px;
+            text-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* QR Code Container */
+        .qr-wrapper {
+            position: relative;
+            display: inline-block;
+            padding: 30px;
+        }
+
+        /* Outer glow ring */
+        .glow-ring {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ffff) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        /* Corner brackets */
+        .corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-color: #00ffff;
+            border-style: solid;
+            border-width: 0;
+        }
+
+        .corner-tl { top: 0; left: 0; border-top-width: 3px; border-left-width: 3px; }
+        .corner-tr { top: 0; right: 0; border-top-width: 3px; border-right-width: 3px; }
+        .corner-bl { bottom: 0; left: 0; border-bottom-width: 3px; border-left-width: 3px; }
+        .corner-br { bottom: 0; right: 0; border-bottom-width: 3px; border-right-width: 3px; }
+
+        /* QR Code Container */
+        .qr-container {
+            position: relative;
+            background: linear-gradient(135deg, #0d0d15 0%, #1a1a2e 100%);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow:
+                0 0 60px rgba(0, 255, 255, 0.3),
+                0 0 100px rgba(255, 0, 255, 0.2),
+                inset 0 0 60px rgba(0, 0, 0, 0.5);
+        }
+
+        #qrcode {
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #qrcode canvas {
+            border-radius: 8px;
+        }
+
+        /* Scan line effect */
+        .scan-line {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: scan 2.5s linear infinite;
+            opacity: 0.8;
+            box-shadow: 0 0 20px #00ffff;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: 25px; opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { top: calc(100% - 28px); opacity: 0; }
+        }
+
+        /* Circuit decoration lines */
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            height: 1px;
+        }
+
+        .circuit-line-1 { top: 30%; left: -100px; width: 80px; }
+        .circuit-line-2 { top: 50%; left: -150px; width: 130px; }
+        .circuit-line-3 { top: 70%; left: -100px; width: 80px; }
+        .circuit-line-4 { top: 30%; right: -100px; width: 80px; }
+        .circuit-line-5 { top: 50%; right: -150px; width: 130px; }
+        .circuit-line-6 { top: 70%; right: -100px; width: 80px; }
+
+        /* Info text */
+        .info {
+            margin-top: 30px;
+        }
+
+        .free-trial {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border-radius: 30px;
+            letter-spacing: 2px;
+            animation: pulse 1.5s ease-in-out infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.8); }
+        }
+
+        .limited {
+            color: #ff4444;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .counter {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #00ffff;
+            margin-top: 15px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+
+        .counter span {
+            color: #ff00ff;
+        }
+
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scan-instruction {
+            margin-top: 25px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 2px;
+        }
+
+        .scan-instruction span {
+            color: #00ffff;
+        }
+
+        /* Loading state */
+        .loading {
+            color: rgba(0, 255, 255, 0.5);
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 0.5s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 1.5s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 0.8s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 1.8s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 2.8s;"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo">NEUROCIAN</div>
+        <h1 class="title">OPTIMA CHIP</h1>
+        <p class="tagline">Your Optimal Future Awaits</p>
+
+        <div class="qr-wrapper">
+            <div class="glow-ring"></div>
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+
+            <div class="circuit-line circuit-line-1"></div>
+            <div class="circuit-line circuit-line-2"></div>
+            <div class="circuit-line circuit-line-3"></div>
+            <div class="circuit-line circuit-line-4"></div>
+            <div class="circuit-line circuit-line-5"></div>
+            <div class="circuit-line circuit-line-6"></div>
+
+            <div class="qr-container">
+                <div class="scan-line"></div>
+                <div id="qrcode">
+                    <span class="loading">Generating...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="free-trial">FIRST 1,000 FREE</div>
+            <div class="limited">LIMITED TIME OFFER</div>
+            <div class="counter"><span id="countdown">59:59</span> REMAINING</div>
+            <p class="scan-instruction">SCAN TO <span>REGISTER</span> NOW</p>
+            <p class="disclaimer">By scanning, you agree to Neurocian's Terms of Cognitive Service. Results may vary.
+            Side effects may include optimal decision-making, reduced anxiety, and possible existential clarity.</p>
+        </div>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+    <script>
+        // Configuration - GitHub Pages URL
+        const LANDING_PAGE_URL = 'https://asa8118.github.io/optima-choice/landing-page.html';
+
+        // Generate QR Code
+        const qrContainer = document.getElementById('qrcode');
+
+        // Create canvas for QR code
+        const canvas = document.createElement('canvas');
+        canvas.width = 280;
+        canvas.height = 280;
+
+        QRCode.toCanvas(canvas, LANDING_PAGE_URL, {
+            width: 280,
+            margin: 2,
+            color: {
+                dark: '#00ffff',
+                light: '#0d0d15'
+            },
+            errorCorrectionLevel: 'H'
+        }, function(error) {
+            if (error) {
+                console.error(error);
+                qrContainer.innerHTML = '<span class="loading">Error generating QR</span>';
+                return;
+            }
+
+            // Clear loading text and add canvas
+            qrContainer.innerHTML = '';
+            qrContainer.appendChild(canvas);
+
+            // Add center logo overlay
+            const ctx = canvas.getContext('2d');
+            const centerSize = 50;
+            const centerX = (280 - centerSize) / 2;
+            const centerY = (280 - centerSize) / 2;
+
+            // Draw background for logo
+            ctx.fillStyle = '#0d0d15';
+            ctx.fillRect(centerX - 5, centerY - 5, centerSize + 10, centerSize + 10);
+
+            // Draw chip icon
+            const gradient = ctx.createLinearGradient(centerX, centerY, centerX + centerSize, centerY + centerSize);
+            gradient.addColorStop(0, '#00ffff');
+            gradient.addColorStop(1, '#ff00ff');
+
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 2;
+            ctx.strokeRect(centerX + 8, centerY + 8, centerSize - 16, centerSize - 16);
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(centerX + 17, centerY + 17, centerSize - 34, centerSize - 34);
+
+            // Chip pins
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX + centerSize/2, centerY);
+            ctx.lineTo(centerX + centerSize/2, centerY + 8);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(centerX + centerSize/2, centerY + centerSize - 8);
+            ctx.lineTo(centerX + centerSize/2, centerY + centerSize);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY + centerSize/2);
+            ctx.lineTo(centerX + 8, centerY + centerSize/2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(centerX + centerSize - 8, centerY + centerSize/2);
+            ctx.lineTo(centerX + centerSize, centerY + centerSize/2);
+            ctx.stroke();
+        });
+
+        // Countdown timer
+        let time = 3599; // 59:59 in seconds
+        const countdown = document.getElementById('countdown');
+
+        setInterval(() => {
+            if (time > 0) {
+                time--;
+                const minutes = Math.floor(time / 60);
+                const seconds = time % 60;
+                countdown.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }, 1000);
+
+        // Log the URL being encoded for debugging
+        console.log('QR Code URL:', LANDING_PAGE_URL);
+    </script>
+</body>
+</html>
