@@ -614,9 +614,12 @@
 
         /* Footer */
         footer {
+            position: relative;
+            z-index: 100;
             padding: 60px 20px 30px;
             border-top: 1px solid rgba(0, 255, 255, 0.1);
             text-align: center;
+            background: var(--darker);
         }
 
         .footer-logo {
@@ -1366,10 +1369,19 @@
                 }
             };
 
+            // Error element ID mapping
+            const errorIdMap = {
+                'full-name': 'name-error',
+                'email': 'email-error',
+                'phone': 'phone-error',
+                'optimization-goal': 'goal-error',
+                'terms': 'terms-error'
+            };
+
             // Real-time validation
             Object.keys(validations).forEach(function(fieldId) {
                 const field = document.getElementById(fieldId);
-                const errorEl = document.getElementById(fieldId.replace('-', '') + '-error');
+                const errorEl = document.getElementById(errorIdMap[fieldId]);
 
                 field.addEventListener('blur', function() {
                     validateField(fieldId);
@@ -1385,7 +1397,7 @@
             function validateField(fieldId) {
                 const field = document.getElementById(fieldId);
                 const validation = validations[fieldId];
-                const errorEl = document.getElementById(fieldId.replace(/-/g, '') + '-error');
+                const errorEl = document.getElementById(errorIdMap[fieldId]);
 
                 const isValid = validation.isCheckbox ?
                     validation.validate(field) :

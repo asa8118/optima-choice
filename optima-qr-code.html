@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OPTIMA CHIP - Register Now | Neurocian</title>
+    <meta name="description" content="Scan to register for the Optima Chip - Join the cognitive revolution. Limited time free implant offer from Neurocian.">
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.qrserver.com">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
 
@@ -19,7 +24,7 @@
             justify-content: center;
             align-items: center;
             background: #0a0a0f;
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow: hidden;
         }
 
@@ -353,8 +358,9 @@
             const qrSize = 280;
             const encodedText = encodeURIComponent(text);
 
-            // Use QR Server API (reliable, always works)
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${qrSize}x${qrSize}&data=${encodedText}&color=00ffff&bgcolor=0d0d15&margin=10&qzone=1&format=svg`;
+            // Use QR Server API (reliable, always works) - cache buster added
+            const cacheBuster = Date.now();
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${qrSize}x${qrSize}&data=${encodedText}&color=00ffff&bgcolor=0d0d15&margin=10&qzone=1&format=svg&v=${cacheBuster}`;
 
             const img = document.createElement('img');
             img.src = qrUrl;
@@ -363,6 +369,8 @@
             img.style.height = '280px';
             img.style.borderRadius = '8px';
             img.style.display = 'block';
+            img.loading = 'eager'; // Priority load
+            img.decoding = 'async'; // Non-blocking decode
 
             img.onload = function() {
                 qrContainer.innerHTML = '';

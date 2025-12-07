@@ -1,0 +1,137 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e6]:
+    - generic [ref=e7]:
+      - img [ref=e8]
+      - generic [ref=e11]: NEUROCIAN
+    - list [ref=e12]:
+      - listitem [ref=e13]:
+        - link "Features" [active] [ref=e14] [cursor=pointer]:
+          - /url: "#features"
+      - listitem [ref=e15]:
+        - link "Testimonials" [ref=e16] [cursor=pointer]:
+          - /url: "#testimonials"
+      - listitem [ref=e17]:
+        - link "Register" [ref=e18] [cursor=pointer]:
+          - /url: "#register"
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e23]: "LIMITED TIME: Free Implant Offer"
+      - heading "OPTIMA CHIP" [level=1] [ref=e24]
+      - paragraph [ref=e25]: The neural interface that eliminates decision fatigue. Make optimal choices instantly. Live your best life effortlessly.
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]: 99.7%
+          - generic [ref=e29]: Satisfaction Rate
+        - generic [ref=e30]:
+          - generic [ref=e31]: 2.3M+
+          - generic [ref=e32]: Active Users
+        - generic [ref=e33]:
+          - generic [ref=e34]: "730"
+          - generic [ref=e35]: Hours Saved/Year
+      - generic [ref=e36]:
+        - link "Claim Free Implant" [ref=e37] [cursor=pointer]:
+          - /url: "#register"
+          - generic [ref=e38]: Claim Free Implant
+          - img [ref=e39]
+        - generic [ref=e41]: Only 847 free slots remaining!
+    - generic [ref=e42]:
+      - heading "Optimize Everything" [level=2] [ref=e43]
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - img [ref=e47]
+          - heading "Instant Decisions" [level=3] [ref=e50]
+          - paragraph [ref=e51]: Process complex choices in milliseconds. No more analysis paralysis or decision fatigue.
+        - generic [ref=e52]:
+          - img [ref=e54]
+          - heading "Personalized AI" [level=3] [ref=e58]
+          - paragraph [ref=e59]: Learns your goals, values, and preferences. Every recommendation is tailored to YOU.
+        - generic [ref=e60]:
+          - img [ref=e62]
+          - heading "Zero Regrets" [level=3] [ref=e65]
+          - paragraph [ref=e66]: Every decision optimized for maximum outcome. Say goodbye to "what ifs" forever.
+        - generic [ref=e67]:
+          - img [ref=e69]
+          - heading "Military-Grade Security" [level=3] [ref=e72]
+          - paragraph [ref=e73]: 256-bit neural encryption. Your thoughts stay yours. Always.
+        - generic [ref=e74]:
+          - img [ref=e76]
+          - heading "Life Integration" [level=3] [ref=e79]
+          - paragraph [ref=e80]: Seamlessly connects with your calendar, finances, relationships, and health data.
+        - generic [ref=e81]:
+          - img [ref=e83]
+          - heading "Performance Analytics" [level=3] [ref=e84]
+          - paragraph [ref=e85]: Track your optimization score. Watch your life improve in real-time dashboards.
+    - generic [ref=e86]:
+      - heading "Success Stories" [level=2] [ref=e87]
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - paragraph [ref=e90]: "\"I used to spend hours deciding what to eat, wear, invest in. Now? Instant clarity. My productivity increased 340% in the first month.\""
+          - generic [ref=e91]:
+            - generic [ref=e92]: JK
+            - generic [ref=e93]:
+              - heading "James Kowalski" [level=4] [ref=e94]
+              - text: CEO, TechVentures Inc.
+        - generic [ref=e95]:
+          - paragraph [ref=e96]: "\"The chip helped me find my soulmate, optimize my career path, and finally achieve work-life balance. It literally saved my marriage.\""
+          - generic [ref=e97]:
+            - generic [ref=e98]: SM
+            - generic [ref=e99]:
+              - heading "Sarah Mitchell" [level=4] [ref=e100]
+              - text: Neurosurgeon, Stanford Medical
+        - generic [ref=e101]:
+          - paragraph [ref=e102]: "\"As someone with severe anxiety and OCD, the Optima Chip gave me peace I never thought possible. No more endless loops. Just... calm.\""
+          - generic [ref=e103]:
+            - generic [ref=e104]: RH
+            - generic [ref=e105]:
+              - heading "Robert Hansen" [level=4] [ref=e106]
+              - text: Author & Speaker
+    - generic [ref=e108]:
+      - heading "Claim Your Free Chip" [level=2] [ref=e109]
+      - paragraph [ref=e110]: Join the cognitive revolution. Limited spots available.
+      - generic [ref=e111]:
+        - generic [ref=e112]:
+          - generic [ref=e113]: Full Name
+          - textbox "Enter your full name" [ref=e114]
+        - generic [ref=e115]:
+          - generic [ref=e116]: Email Address
+          - textbox "your@email.com" [ref=e117]
+        - generic [ref=e118]:
+          - generic [ref=e119]: Phone Number
+          - textbox "+1 (555) 000-0000" [ref=e120]
+        - generic [ref=e121]:
+          - generic [ref=e122]: Primary Optimization Goal
+          - combobox [ref=e123]:
+            - option "Select your goal..." [selected]
+            - option "Career & Productivity"
+            - option "Financial Decisions"
+            - option "Health & Wellness"
+            - option "Relationships & Social"
+            - option "Complete Life Optimization"
+        - generic [ref=e124]:
+          - checkbox "I agree to the Terms of Cognitive Service, Privacy Policy, and Neural Data Agreement. I understand the implant is permanent and irreversible." [ref=e125]
+          - generic [ref=e126]: I agree to the Terms of Cognitive Service, Privacy Policy, and Neural Data Agreement. I understand the implant is permanent and irreversible.
+        - generic [ref=e127]:
+          - checkbox "Send me optimization tips and exclusive offers from Neurocian partners." [ref=e128]
+          - generic [ref=e129]: Send me optimization tips and exclusive offers from Neurocian partners.
+        - button "Reserve My Free Chip" [ref=e130] [cursor=pointer]
+  - contentinfo [ref=e131]:
+    - generic [ref=e132]: NEUROCIAN
+    - generic [ref=e133]:
+      - link "Privacy Policy" [ref=e134] [cursor=pointer]:
+        - /url: "#"
+      - link "Terms of Service" [ref=e135] [cursor=pointer]:
+        - /url: "#"
+      - link "Neural Data Agreement" [ref=e136] [cursor=pointer]:
+        - /url: "#"
+      - link "Safety Information" [ref=e137] [cursor=pointer]:
+        - /url: "#"
+      - link "Contact Us" [ref=e138] [cursor=pointer]:
+        - /url: "#"
+    - paragraph [ref=e139]: © 2087 Neurocian Corporation. All rights reserved. "Optimize Everything"™
+  - generic [ref=e140]:
+    - generic [ref=e141]: "FREE OFFER ENDS IN:"
+    - generic [ref=e142]: 59:58
+```
